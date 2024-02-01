@@ -1,2 +1,6 @@
 This is a trash file. It does nothing.
+<<<<<<< HEAD
 Testing...
+=======
+Mostly just to prove a concept.
+>>>>>>> 8730d4e336800d1b92b5f79aff4f33350784c1c0
