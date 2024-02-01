@@ -19,3 +19,10 @@ The `JAVA PROJECTS` view allows you to manage your dependencies. More details ca
 
 To run, cd into this directory, then enter this into the terminal:
 java src/App.java
+
+Redhat v1.21.0
+
+Java V21.1.0
+
+Tutorial:
+https://www.baeldung.com/java-read-json-from-url
