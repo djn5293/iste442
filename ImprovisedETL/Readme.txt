@@ -8,3 +8,5 @@ IDE: VS Code vVersion: 1.77.3 (Universal)
 
 Python Extension
 - ID: ms-python.python
+
+To run the program
