@@ -36,7 +36,7 @@ fs.writeFile("./" + datef + ".csv", csv, function(err) {
     console.log("The file was saved!");
 });
 
-//formating functino for manking numbebers 2 digits ex "2" -> "02"
+//formating function for manking numbebers 2 digits ex "2" -> "02"
 function pad2(number) {
      return (number < 10 ? '0' : '') + number
 }
