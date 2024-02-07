@@ -1,0 +1,55 @@
+9d8
+< */
+10a10,19
+> Edited: 2024/02/07
+> Editor: Declan Naughton
+> ISTE 442: Exercise 3: Version Control
+> Software used: Nodejs
+> I've modified this file and patched it to meet new criteria desired by the client.
+> - Now records the email of people in the data file. Will filter out any records without
+>   an email address.
+> - Data filename is no longer hard coded. Instead, the information is input as
+>   a command line argument. 
+> */
+12c21,27
+< var fs = require('fs');
+---
+> const fs = require('fs');
+> //Node JS dependencies for processing cmd line input.
+> const process = require('process');
+> //The first argument passed to the program. Should be the name of the file.
+> const arg = process.argv[2];
+> 
+> //console.log(arg);
+14c29
+< var obj = JSON.parse(fs.readFileSync('./data.json','utf8'));
+---
+> const obj = JSON.parse(fs.readFileSync(arg,'utf8'));
+16c31
+< var date = new Date(obj[0].timestamp);
+---
+> const date = new Date(obj[0].timestamp);
+18c33
+< var datef = date.getFullYear() + pad2(date.getMonth()+1) + pad2(date.getDate());
+---
+> const datef = date.getFullYear() + pad2(date.getMonth()+1) + pad2(date.getDate());
+20c35
+< var csv = ""
+---
+> let csv = ""
+22c37
+< for(var i = 0; i < obj.length; i++){
+---
+> for(const item of obj){
+24,27c39,44
+<   var item = obj[i];
+<   //check if item has a creditcard then save the :name and :creditcard to the cvs object in the cvs format
+<   if(item.creditcard != null){
+<     csv += item.name + "," + item.creditcard + "\n";
+---
+>   //check if item has a creditcard and email then save the :name, :email, and 
+>   //:creditcard to the cvs object in the cvs format
+>   if(item.creditcard != null && item.email != null){
+>     csv += item.name + "," + item.email + "," + 
+>     item.creditcard + "," +
+>     "\n";

@@ -6,25 +6,42 @@ Software used: Nodejs (No extra dependencies)
 Why?: The reason I used nodejs is because we are dealing
 with a json data format and nodejs is built to handle
 that natively without any external plugins
-*/
 
+Edited: 2024/02/07
+Editor: Declan Naughton
+ISTE 442: Exercise 3: Version Control
+Software used: Nodejs
+I've modified this file and patched it to meet new criteria desired by the client.
+- Now records the email of people in the data file. Will filter out any records without
+  an email address.
+- Data filename is no longer hard coded. Instead, the information is input as
+  a command line argument. 
+*/
 //Node JS dependencies for reading and writing files to the file system.
-var fs = require('fs');
+const fs = require('fs');
+//Node JS dependencies for processing cmd line input.
+const process = require('process');
+//The first argument passed to the program. Should be the name of the file.
+const arg = process.argv[2];
+
+//console.log(arg);
 //Read the file from the file system
-var obj = JSON.parse(fs.readFileSync('./data.json','utf8'));
+const obj = JSON.parse(fs.readFileSync(arg,'utf8'));
 //get the date from the first item.
-var date = new Date(obj[0].timestamp);
+const date = new Date(obj[0].timestamp);
 //format the date to the YYYYMMDD.csv required for the submission.
-var datef = date.getFullYear() + pad2(date.getMonth()+1) + pad2(date.getDate());
+const datef = date.getFullYear() + pad2(date.getMonth()+1) + pad2(date.getDate());
 //to return string object
-var csv = ""
+let csv = ""
 //for loop to parse all items
-for(var i = 0; i < obj.length; i++){
+for(const item of obj){
   //item is a single person
-  var item = obj[i];
-  //check if item has a creditcard then save the :name and :creditcard to the cvs object in the cvs format
-  if(item.creditcard != null){
-    csv += item.name + "," + item.creditcard + "\n";
+  //check if item has a creditcard and email then save the :name, :email, and 
+  //:creditcard to the cvs object in the cvs format
+  if(item.creditcard != null && item.email != null){
+    csv += item.name + "," + item.email + "," + 
+    item.creditcard + "," +
+    "\n";
   }
 }
 
