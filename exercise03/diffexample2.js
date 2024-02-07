@@ -9,18 +9,19 @@ that natively without any external plugins
 */
 
 //Node JS dependencies for reading and writing files to the file system.
-const fs = require('fs');
+var fs = require('fs');
 //Read the file from the file system
-const obj = JSON.parse(fs.readFileSync('./data.json','utf8'));
+var obj = JSON.parse(fs.readFileSync('./data.json','utf8'));
 //get the date from the first item.
-const date = new Date(obj[0].timestamp);
+var date = new Date(obj[0].timestamp);
 //format the date to the YYYYMMDD.csv required for the submission.
-const datef = date.getFullYear() + pad2(date.getMonth()+1) + pad2(date.getDate());
+var datef = date.getFullYear() + pad2(date.getMonth()+1) + pad2(date.getDate());
 //to return string object
-let csv = ""
+var csv = ""
 //for loop to parse all items
-for(const item of obj){
+for(var i = 0; i < obj.length; i++){
   //item is a single person
+  var item = obj[i];
   //check if item has a creditcard then save the :name and :creditcard to the cvs object in the cvs format
   if(item.creditcard != null){
     csv += item.name + "," + item.creditcard + "\n";
