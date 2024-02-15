@@ -1,3 +1,7 @@
+%{
+#include <lexer.h>
+%}
+
     int feeCount=0;
     int fieCount=0;
     int foeCount=0;

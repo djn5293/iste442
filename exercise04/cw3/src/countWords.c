@@ -1,8 +1,8 @@
 #include <stdio.h>
-extern int feeCount, fieCount, foeCount, fumCount;
-extern int yylex(void);
+#include <counter.h>
 int main(int argc, char ** argv) {
-    while(yylex())
-    ;
-    printf("%d %d %d %d\n",feeCount,fieCount,foeCount,fumCount);
+    int counts[4];
+    counter(counts);
+    printf("%d %d %d %d\n",
+        counts[0],counts[1],counts[2],counts[3]);
 }
