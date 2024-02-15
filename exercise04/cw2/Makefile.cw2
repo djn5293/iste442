@@ -1,3 +1,7 @@
+VPATH = src include /usr/local/opt/flex/lib
+CPPFLAGS = -I include
+LEX=flex
+
 countWords : countWords.o lexer.o
 	gcc $^ -lfl -L/usr/local/opt/flex/lib -o $@
 

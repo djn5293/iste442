@@ -1,0 +1,8 @@
+VPATH = src include /usr/local/opt/flex/lib
+CPPFLAGS = -I include
+LEX=flex
+
+clean:
+	@echo "Cleaning existing classes..."
+	rm -f *.class
+	find . -name \*.class -exec rm {} \;

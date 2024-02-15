@@ -1,5 +1,6 @@
 VPATH = src include /usr/local/opt/flex/lib
 CPPFLAGS = -I include
+LEX=flex
 
 countWords : counter.o lexer.o -lfl
 countWords.o : counter.h
