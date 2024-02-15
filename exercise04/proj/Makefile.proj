@@ -2,7 +2,13 @@ VPATH = src include /usr/local/opt/flex/lib
 CPPFLAGS = -I include
 LEX=flex
 
-clean:
+compile : clean
+	@echo "Compiling source code and unit tests..."
+	@javac -d ./src/build/ -classpath .:lib/junit-4.12.jar:lib/hamcrest-core-1.3.jar src/main/java/*.java src/test/java/*.java
+clean :
 	@echo "Cleaning existing classes..."
 	rm -f *.class
 	find . -name \*.class -exec rm {} \;
+
+all : clean compile
+	@echo "Built"
